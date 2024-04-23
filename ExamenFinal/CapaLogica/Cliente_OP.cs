@@ -9,7 +9,7 @@ namespace ExamenFinal.CapaLogica
 {
     public class Cliente_OP
     {
-        private string cadenaConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog=WalterDB;Integrated Security=True";
+        private string cadenaConexion = "Data Source=.;Initial Catalog=WalterDB;Integrated Security=True";
 
         public DataTable ObtenerClientes()
         {

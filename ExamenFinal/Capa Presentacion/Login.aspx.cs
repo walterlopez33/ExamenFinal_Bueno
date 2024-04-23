@@ -1,6 +1,9 @@
 ﻿using ExamenFinal.CapaLogica;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,10 +20,64 @@ namespace ExamenFinal.Presentacion
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if ((username.Text == "WALTER") && (password.Text == ""))
+            ClsUsuario usuario = new ClsUsuario();
+
+            usuario.Login_Usuario = username.Text;
+            usuario.Clave_Usuario = password.Text;
+
+            string connectionString = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
             {
-                Response.Redirect("Menuprincipal.aspx");
+                int resultado = 0;
+
+                connection.Open();
+                string query = "IF EXISTS(SELECT * FROM Usuarios WHERE Login_Usuario = '" + usuario.Login_Usuario + "' AND Clave_Usuario = '" + usuario.Clave_Usuario + "') BEGIN SELECT 1 AS resultado END ELSE BEGIN SELECT 0 AS resultado END";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        using (DataTable dt = new DataTable())
+                        {
+                            adapter.Fill(dt);
+
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                resultado = int.Parse(dt.Rows[0]["resultado"].ToString());
+                            }
+                        }
+                    }
+                }
+
+
+                if (resultado == 1)
+                {
+                    Response.Redirect("Menuprincipal.aspx");
+                }
+
+                else
+                {
+                    string Message = "Usuario o contrasena incorrectos.";
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('" + Message + "');", true);
+                }
             }
+
+            catch (Exception ex)
+            {
+                string errorMessage = "Error al Obtener el Reporte. Descripción del error: " + ex.Message;
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('" + errorMessage + "');", true);
+            }
+            finally
+            {
+                if (connection != null && connection.State != System.Data.ConnectionState.Closed)
+                {
+                    connection.Close();
+                }
+            }
+
+
         }
     }
 }

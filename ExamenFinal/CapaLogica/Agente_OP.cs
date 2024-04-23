@@ -9,18 +9,18 @@ namespace ExamenFinal.CapaLogica
 {
     public class Agente_OP
     {
-        private string cadenaConexion = "Data Source=.\\SQLEXPRESS;Initial Catalog=WalterDB;Integrated Security=True";
+        private string cadenaConexion = "Data Source=.;Initial Catalog=WalterDB;Integrated Security=True";
 
         public DataTable ObtenerAgentes()
         {
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion2 = new SqlConnection(cadenaConexion))
             {
                 string procedimiento = "GestionarAgentes";
-                using (SqlCommand comando = new SqlCommand(procedimiento, conexion))
+                using (SqlCommand comando = new SqlCommand(procedimiento, conexion2))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@accion", "consultar");
-                    conexion.Open();
+                    conexion2.Open();
                     DataTable tabla = new DataTable();
                     tabla.Load(comando.ExecuteReader());
                     return tabla;

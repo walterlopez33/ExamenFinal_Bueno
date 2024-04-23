@@ -68,11 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BD\ExamenfinalBD.sql" />
+    <Content Include="BD\QueyDB.sql" />
     <Content Include="Capa Presentacion\Agente_Vista.aspx" />
     <Content Include="Capa Presentacion\Clientes_View.aspx" />
     <Content Include="Capa Presentacion\Login.aspx" />
     <Content Include="Capa Presentacion\Menuprincipal.aspx" />
-    <Content Include="Capa Presentacion\Venta_View.aspx" />
     <Content Include="CSS\CSS_cliente.css" />
     <Content Include="CSS\CSS_agente.css" />
     <Content Include="CSS\CSS_login.css" />
@@ -108,18 +108,12 @@
     <Compile Include="Capa Presentacion\Menuprincipal.aspx.designer.cs">
       <DependentUpon>Menuprincipal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Capa Presentacion\Venta_View.aspx.cs">
-      <DependentUpon>Venta_View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Capa Presentacion\Venta_View.aspx.designer.cs">
-      <DependentUpon>Venta_View.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CapaDatos\ClsAgente.cs" />
     <Compile Include="CapaDatos\ClsCliente.cs" />
     <Compile Include="CapaDatos\ClsVentas.cs" />
     <Compile Include="CapaLogica\Agente_OP.cs" />
     <Compile Include="CapaLogica\Cliente_OP.cs" />
+    <Compile Include="CapaLogica\ClsUsuario.cs" />
     <Compile Include="CapaLogica\Venta_OP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">

@@ -27,6 +27,7 @@ namespace ExamenFinal.Capa_Presentacion
 
         protected void btnIncluir_Click(object sender, EventArgs e)
         {
+
             try
             {
                 Cliente_OP cli = new Cliente_OP();

@@ -4,6 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <p>PRINCIPAL</p>
+        <H1>MENU PRINCIPAL</H1>
     </div>
 </asp:Content>

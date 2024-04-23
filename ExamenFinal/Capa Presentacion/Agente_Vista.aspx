@@ -46,7 +46,7 @@
     <br /><br />
 
     <div class="container d-flex align-items-center flex-column">
-        <h1>Lista Datos</h1>
+        <h1>Reporte de Agentes</h1>
   
         <asp:GridView ID="listaDatos" runat="server"></asp:GridView>
     </div>

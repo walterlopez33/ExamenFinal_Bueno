@@ -4,7 +4,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<h1>Gestión de Clientes</h1>
+    <h1>Gestión de Clientes</h1>
 
 <div>
     <label for="nombre">Nombre:</label>
@@ -46,8 +46,16 @@
 <br /><br />
 
 <div class="container d-flex align-items-center flex-column">
-    <h1>Lista Datos</h1>
+    <h1>Reporte Clientes</h1>
   
-    <asp:GridView ID="listaDatos" runat="server"></asp:GridView>
+    <asp:GridView ID="listaDatos" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SQLClientes">
+        <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
+            <asp:BoundField DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+            <asp:BoundField DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
+        </Columns>
+    </asp:GridView>
+    <asp:SqlDataSource ID="SQLClientes" runat="server" ConnectionString="<%$ ConnectionStrings:WalterDBConnectionStringClient %>" ProviderName="<%$ ConnectionStrings:WalterDBConnectionStringClient.ProviderName %>" SelectCommand="SELECT [ID], [Nombre], [Email], [Telefono] FROM [Clientes]"></asp:SqlDataSource>
 </div>
 </asp:Content>
