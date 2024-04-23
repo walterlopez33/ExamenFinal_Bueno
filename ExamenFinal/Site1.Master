@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="ExamenFinal.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="CSS/CSS_menu.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <ul>
+                <li><a class="active" href="Menuprincipal.aspx">Principal</a></li>
+                <li><a href="Agente_Vista.aspx">Agentes</a></li>
+                <li><a href="Clientes_View.aspx">Clientes</a></li>
+            </ul>
+        </div>
+        <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                test
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
+
